@@ -1,0 +1,53 @@
+openapi: 3.0.3
+
+info:
+  title: Greeting API
+  description: "An API that will send you a greet according to a given name"
+  contact:
+    name: Yonatan Karp-Rudin
+    url: https://yonatankarp.com
+  version: 0.1.0
+
+tags:
+  - name: Greeting
+
+servers:
+  - url: http://localhost:8080/v1
+    description: Local development environment
+
+paths:
+  /greet:
+    get:
+      operationId: greet_name
+      description: Greeting a given name.
+      tags:
+        - Greeting
+
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: false
+          description: The name to greet if no name supplied the API will greet the world
+
+      responses:
+        200:
+          description: Returning a greeting with the given name.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GreetResponse"
+
+components:
+  schemas:
+    GreetResponse:
+      type: object
+      properties:
+        greet:
+          type: string
+          description: The greet from the API.
+          example: "Hello, Stefan"
+
+      required:
+        - greet
