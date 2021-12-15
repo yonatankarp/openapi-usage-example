@@ -1,0 +1,46 @@
+on:
+  pull_request:
+    branches: ['main']
+    types: [ opened, synchronize, reopened, ready_for_review ]
+    paths-ignore:
+      - '**.md'
+  pull_request_target:
+    types: [ opened, synchronize, reopened, ready_for_review ]
+    paths-ignore:
+      - '**.md'
+jobs:
+  ci:
+    # If the PR is coming from a fork (pull_request_target), ensure it's opened by "dependabot[bot]".
+    # Otherwise, clone it normally.
+    if: |
+      (github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]') ||
+      (github.event_name != 'pull_request_target' && github.actor != 'dependabot[bot]')
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Install Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: 'adopt'
+
+      - name: Git Checkout
+        uses: actions/checkout@v2
+        # Do not trigger a checkout when opening PRs from a fork (helps avoid
+        # "pwn request". See https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target )
+        if: github.event_name != 'pull_request_target'
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Dependabot Checkout
+        uses: actions/checkout@v2
+        if: github.event_name == 'pull_request_target'
+        with:
+          # Dependabot can only check out at the HEAD of the PR branch
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Gradle Build
+        id: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew openApiGenerate build
