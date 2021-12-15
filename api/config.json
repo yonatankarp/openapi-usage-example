@@ -1,0 +1,8 @@
+{
+  "interfaceOnly": true,
+  "modelPackage": "com.yonatankarp.openapi.models",
+  "apiPackage": "com.yonatankarp.openapi",
+  "implicitHeaders": true,
+  "hideGenerationTimestamp": true,
+  "useTags": true
+}
