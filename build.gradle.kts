@@ -3,7 +3,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
-    id("org.openapi.generator") version "5.3.1"
+    id("org.openapi.generator") version "5.4.0"
 }
 
 group = "com.yonatankarp"
