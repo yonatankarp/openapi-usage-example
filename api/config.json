@@ -4,5 +4,6 @@
   "apiPackage": "com.yonatankarp.openapi",
   "implicitHeaders": true,
   "hideGenerationTimestamp": true,
-  "useTags": true
+  "useTags": true,
+  "documentationProvider": "none"
 }
