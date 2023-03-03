@@ -54,6 +54,11 @@ tasks {
 }
 
 sourceSets[SourceSet.MAIN_SOURCE_SET_NAME].java {
-    srcDir(generatedCodeDirectoryPath + File.separator +
-            "src" + File.separator + "main" + File.separator + "kotlin")
+    srcDir(
+        generatedCodeDirectoryPath + File.separator +
+                "src" + File.separator + "main" + File.separator + "kotlin"
+    )
 }
+
+// Should be removed once the Spotless plugin would be updated to support Gradle 8
+tasks.findByName("compileKotlin")?.dependsOn("openApiGenerate")
