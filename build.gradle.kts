@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version "2.7.5"
+    id("org.springframework.boot") version "3.0.5"
     id("io.spring.dependency-management") version "1.1.0"
     val kotlinVersion = "1.8.10"
     kotlin("jvm") version kotlinVersion
@@ -9,7 +9,7 @@ plugins {
 
 group = "com.yonatankarp"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
