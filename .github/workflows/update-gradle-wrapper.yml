@@ -20,7 +20,7 @@ jobs:
         # WARN: as this action comes from the org without public members and it has relatively few "stars",
         # so this specific SHA passed #infosec review from SumUp. Please do NOT upgrade this version unless
         # it is incompatible with our build - then we'll have to review the version diff.
-        uses: gradle-update/update-gradle-wrapper-action@981c551b17dbcf1940b1b4435afdb79babb7c13a
+        uses: gradle-update/update-gradle-wrapper-action@2eda6ac93d73eb5543958f0354a1230b240f63ec
         env:
           POS_PACKAGES_READ_TOKEN: ${{ secrets.CATALOG_BOT_READ_PACKAGE_GH_TOKEN }}
         with:
