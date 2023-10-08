@@ -9,7 +9,7 @@ plugins {
 
 group = "com.yonatankarp"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ tasks.withType<Test> {
 }
 
 val apiDirectoryPath = projectDir.absolutePath + File.separator + "api"
-val generatedCodeDirectoryPath = buildDir.path + File.separator +
+val generatedCodeDirectoryPath = layout.buildDirectory.get().asFile.absolutePath + File.separator +
         "generated" + File.separator + "open-api"
 
 openApiGenerate {
