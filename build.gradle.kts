@@ -4,7 +4,7 @@ plugins {
     val kotlinVersion = "1.9.20"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
-    id("org.openapi.generator") version "7.0.1"
+    id("org.openapi.generator") version "7.1.0"
 }
 
 group = "com.yonatankarp"
