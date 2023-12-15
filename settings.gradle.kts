@@ -1,1 +1,1 @@
-rootProject.name = "Greeting"
+rootProject.name = "openapi-usage-example"
