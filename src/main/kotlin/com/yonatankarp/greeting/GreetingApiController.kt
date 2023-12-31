@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class GreetingApiController : GreetingApi {
-
     override fun greetName(
-        @RequestParam(value = "name", required = false) name: String?
+        @RequestParam(value = "name", required = false) name: String?,
     ): ResponseEntity<GreetResponse> =
-        if (name.isNullOrBlank())
+        if (name.isNullOrBlank()) {
             ResponseEntity.ok(GreetResponse("Hello, world!"))
-        else
+        } else {
             ResponseEntity.ok(GreetResponse("Hello, $name!"))
+        }
 }
