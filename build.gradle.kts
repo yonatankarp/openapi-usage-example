@@ -2,7 +2,7 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.2.2"
+    id("org.springframework.boot") version "3.2.3"
     id("io.spring.dependency-management") version "1.1.4"
     val kotlinVersion = "1.9.22"
     kotlin("jvm") version kotlinVersion
