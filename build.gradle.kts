@@ -7,7 +7,7 @@ plugins {
     val kotlinVersion = "1.9.23"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
-    id("org.openapi.generator") version "7.3.0"
+    id("org.openapi.generator") version "7.4.0"
     id("com.diffplug.spotless") version "6.25.0"
 }
 
