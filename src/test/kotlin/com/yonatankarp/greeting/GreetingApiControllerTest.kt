@@ -33,9 +33,9 @@ class GreetingApiControllerTest(context: WebApplicationContext) {
         // Given uri and a request
         val uri =
             if (name.isNullOrBlank()) {
-                "/v1/greet"
+                "/greet"
             } else {
-                "/v1/greet?name=$name"
+                "/greet?name=$name"
             }
 
         val request =
