@@ -1,4 +1,5 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -11,7 +12,7 @@ plugins {
     id("com.diffplug.spotless") version "6.25.0"
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
     mavenCentral()
@@ -33,8 +34,8 @@ tasks.withType<Test> {
 
 tasks.withType<KotlinCompile> {
     dependsOn("openApiGenerate")
-    kotlinOptions {
-        jvmTarget = "17"
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_21
     }
 }
 
@@ -107,7 +108,7 @@ val tasksDependencies =
         "spotlessKotlinGradle" to listOf("processResources", "compileKotlin", "compileTestKotlin", "test"),
     )
 
-tasksDependencies.forEach { task, dependsOn ->
+tasksDependencies.forEach { (task, dependsOn) ->
     dependsOn.forEach {
         tasks.findByName(task)!!.dependsOn(it)
     }
