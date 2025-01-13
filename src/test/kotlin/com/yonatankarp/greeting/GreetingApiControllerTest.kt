@@ -19,10 +19,13 @@ import org.springframework.web.context.WebApplicationContext
 @SpringBootTest
 @AutoConfigureMockMvc
 @WebAppConfiguration
-class GreetingApiControllerTest(context: WebApplicationContext) {
+class GreetingApiControllerTest(
+    context: WebApplicationContext,
+) {
     private val mockMvc =
         MockMvcBuilders
-            .webAppContextSetup(context).build()
+            .webAppContextSetup(context)
+            .build()
 
     @ParameterizedTest(name = """should return {1} for name "{0}"""")
     @MethodSource("getTestCase")
@@ -39,7 +42,8 @@ class GreetingApiControllerTest(context: WebApplicationContext) {
             }
 
         val request =
-            MockMvcRequestBuilders.get(uri)
+            MockMvcRequestBuilders
+                .get(uri)
                 .accept(MediaType.APPLICATION_JSON)
 
         // When we call the api
