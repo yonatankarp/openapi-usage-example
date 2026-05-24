@@ -46,8 +46,8 @@ val openApiGenerateOutputDir =
 
 openApiGenerate {
     generatorName = "kotlin-spring"
-    inputSpec = "$apiDirectoryPath/spec.yml"
-    outputDir = openApiGenerateOutputDir
+    inputSpec.set(layout.projectDirectory.file("src/main/resources/api/spec.yml"))
+    outputDir.set(layout.buildDirectory.dir("generated/openapi"))
     apiPackage = "com.yonatankarp.openapi"
     modelPackage = "com.yonatankarp.openapi.models"
     configOptions =
