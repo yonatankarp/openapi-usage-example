@@ -8,7 +8,7 @@ plugins {
     val kotlinVersion = "2.3.21"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
-    id("org.openapi.generator") version "7.21.0"
+    id("org.openapi.generator") version "7.22.0"
     id("com.diffplug.spotless") version "8.5.1"
 }
 
@@ -46,8 +46,8 @@ val openApiGenerateOutputDir =
 
 openApiGenerate {
     generatorName = "kotlin-spring"
-    inputSpec = "$apiDirectoryPath/spec.yml"
-    outputDir = openApiGenerateOutputDir
+    inputSpec.set(layout.projectDirectory.file("src/main/resources/api/spec.yml"))
+    outputDir.set(layout.buildDirectory.dir("generated/openapi"))
     apiPackage = "com.yonatankarp.openapi"
     modelPackage = "com.yonatankarp.openapi.models"
     configOptions =
