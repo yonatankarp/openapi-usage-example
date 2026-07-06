@@ -9,7 +9,7 @@ plugins {
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     id("org.openapi.generator") version "7.23.0"
-    id("com.diffplug.spotless") version "8.7.0"
+    id("com.diffplug.spotless") version "8.8.0"
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_21
